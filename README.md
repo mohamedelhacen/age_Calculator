@@ -2,7 +2,7 @@
 This script asks you for your birthdate in form of day/month/year and then calculates your age in years, months and days.
 
 ## Example 
-[][example.png]
+![Example](example.png)
 
 ## Running this script
 ```bash
