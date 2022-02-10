@@ -1,46 +1,24 @@
-import time
-from calendar import isleap
+import datetime
 
-# Check the leap year
-def if_leap_year(year):
-    if isleap(year):
-        return True
-    else:
-        return False
+birthday = input("What is your birthday? (DD/MM/YYYY) ")
+birthdate = datetime.datetime.strptime(birthday, "%d/%m/%Y").date()
+print(birthdate)
 
-# Get the number of days in each month
-def month_days(month, leap_year):
-    if month in [1, 3, 5, 7, 8, 10, 12]:
-        return 31
-    elif month in [4, 6, 9, 11]:
-        return 30
-    elif month == 2 and leap_year:
-        return 29
-    elif month == 2 and (not leap_year):
-        return 28
+days_difference = datetime.date.today() - birthdate
 
-age = input("Enter your age: ")
-localtime = time.localtime(time.time())
+age_days = days_difference.days
+age_years = age_days // 365
+age_months = age_days // 30
 
-year = int(age)
-month = year * 12 + localtime.tm_mon
-day = 0
+year_module = age_days % 365
+month_module = year_module // 30
+days = year_module % 30
+days_month = age_months % 30
 
-end_year = int(localtime.tm_year)
-begin_year = end_year - year
+print("Your age is :")
+print(age_years, " years, ", month_module, "months and ", days, " days")
+print("---------------------- OR -------------------------")
+print(age_months, " months and", days_month, " days")
+print("---------------------- OR -------------------------")
+print(age_days, " days")
 
-# Get number of days
-for y in range(begin_year, end_year):
-    if (if_leap_year(y)):
-        day += 366
-    else:
-        day += 365
-
-leap_year = if_leap_year(localtime.tm_year)
-for m in range(1, localtime.tm_mon):
-    day += month_days(m, leap_year)
-
-day += localtime.tm_mday
-
-print("You age is ", year, " years or", end=" ")
-print(month, "months or ",day, "days")
