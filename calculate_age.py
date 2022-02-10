@@ -1,8 +1,9 @@
 import datetime
 
-birthday = input("What is your birthday? (DD/MM/YYYY) ")
+birthday = input("What is your birthdate? (DD/MM/YYYY) ")
 birthdate = datetime.datetime.strptime(birthday, "%d/%m/%Y").date()
-print(birthdate)
+print("Your birthdate is:", birthdate)
+print("Today is : ", datetime.date.today())
 
 days_difference = datetime.date.today() - birthdate
 

@@ -1,5 +1,8 @@
 # Calculate your age
-This script asks you for your age in years and then calculates it in months and days.
+This script asks you for your birthdate in form of day/month/year and then calculates your age in years, months and days.
+
+## Example 
+[][example.png]
 
 ## Running this script
 ```bash
